@@ -1,48 +1,32 @@
-// photographer.js
-
-// Classe Photographer qui encapsule les données d'un photographe
+// Classe Photographer qui encapsule les données d'un photographe (déplacer cette class dans un dossier model ?)
 class Photographer {
-    constructor({ name, portrait, city, country, tagline, price, id }) {
-        this.name = name;
-        this.portrait = `assets/photographers/${portrait}`;
-        this.city = city;
-        this.country = country;
-        this.tagline = tagline;
-        this.price = price;
-        this.id = id;
-    }
+  constructor({ name, portrait, city, country, tagline, price, id }) {
+    this.name = name;
+    this.portrait = `assets/photographers/${portrait}`;
+    this.city = city;
+    this.country = country;
+    this.tagline = tagline;
+    this.price = price;
+    this.id = id;
+  }
 
-    // Méthode pour générer la carte HTML du photographe
-    getUserCardDOM() {
-        const article = document.createElement('article');
+  // Méthode pour générer la carte HTML du photographe
+  getUserCardDOM() {
+    const template = `
+       <article>
+            <img src="${this.portrait}" alt="${this.name}">
+            <h2><a href="photographer.html?id=${this.id}">${this.name}</a></h2>
+            <p>${this.city}, ${this.country}</p>
+            <p>${this.tagline}</p>
+            <span>${this.price}€/jour</span>
+        </article>
+        `;
 
-        const img = document.createElement('img');
-        img.setAttribute("src", this.portrait);
-        img.setAttribute("alt", this.name);
-
-        const h2 = document.createElement('h2');
-        h2.textContent = this.name;
-
-        const cityCountry = document.createElement('p');
-        cityCountry.textContent = `${this.city}, ${this.country}`;
-
-        const taglineEl = document.createElement('p');
-        taglineEl.textContent = this.tagline;
-
-        const priceEl = document.createElement('span');
-        priceEl.textContent = `${this.price}€/jour`;
-
-        article.appendChild(img);
-        article.appendChild(h2);
-        article.appendChild(cityCountry);
-        article.appendChild(taglineEl);
-        article.appendChild(priceEl);
-
-        return article;
-    }
+    return template;
+  }
 }
 
-// Fonction factory pour créer une instance de Photographer
+// Fonction Factory pour créer une instance de Photographer (déplacer cette factory dans un dossier factory ?)
 export function photographerTemplate(data) {
-    return new Photographer(data);
+  return new Photographer(data);
 }

@@ -69,7 +69,8 @@ h1 {
     border-radius:100%;
     object-fit: cover;
 }
-.photographer_section article a {
+.photographer_section article h2 a {
+    color: #D3573C;
     text-decoration: none;
     text-align: center;
 }
