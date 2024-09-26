@@ -18,12 +18,14 @@ class Photographer {
             <h2><a href="photographer.html?id=${this.id}">${this.name}</a></h2>
             <p>${this.city}, ${this.country}</p>
             <p>${this.tagline}</p>
-            <span>${this.price}€/jour</span>
+            <span>${this.price} €/jour</span>
         </article>
         `;
 
     return template;
   }
+
+ 
 }
 
 // Fonction Factory pour créer une instance de Photographer (déplacer cette factory dans un dossier factory ?)

@@ -12,7 +12,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
     </header>
     <main id="main">
       <div class="photograph-header"></div>
@@ -25,22 +25,26 @@
         </select>
         <div class="photograph-gallery" id="gallery"></div>
       </div>
-    </main>
-    <div id="contact_modal">
-      <div class="modal">
+      <div class="photographer-rating"></div>
+      <!-- <div class="modal-overlay" id="modalOverlay"></div> -->
+      <div id="contact_modal" class="modal">
         <header>
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
         <form>
-          <div>
-            <label>Prénom</label>
-            <input />
-          </div>
-          <button class="contact_button">Envoyer</button>
+          <label for="prenom">Prénom</label>
+          <input type="text" id="prenom" name="prenom" required />
+          <label for="nom">Nom</label>
+          <input type="text" id="nom" name="nom" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <label for="message">Votre message</label>
+          <textarea id="message" name="message" required></textarea>
+          <button type="submit">Envoyer</button>
         </form>
       </div>
-    </div>
+    </main>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
