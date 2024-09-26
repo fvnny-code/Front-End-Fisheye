@@ -34,6 +34,52 @@
 .photographer-info p{
     font-size: 14px;
 }
+.photograph-work{
+    margin: 30px 100px
+}
+
+.photograph-work #sortSelect, 
+#sortSelect option{
+    padding: 8px 16px;
+    border: none;
+    background-color: #901C1C;
+    color: #FAFAFA;
+    border-radius: 5px;
+    font-family: "DM Sans", sans-serif;
+}
+.photograph-gallery{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 30px;
+    column-gap: 50px;
+}
+
+.gallery-item{
+    flex-basis: 28%;
+    margin-bottom: 30px;
+ }
+ .item img,
+ .item video{
+     width: 100%;
+     height: 250px;
+     object-fit: cover;
+     border-radius: 5px;
+     cursor: pointer;
+ }
+ .media{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+ }
+ .media-title,
+ .media-likes {
+    color: #901C1C!important;
+ }
+
 
 .contact_button {
     font-size: 20px;

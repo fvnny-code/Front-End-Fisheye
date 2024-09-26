@@ -7,3 +7,20 @@ export async function getPhotographers() {
     return data;
 }
 
+export async function getMedias() {
+    try {
+        const fetchMedias = await fetch("data/photographers.json");
+        if (!fetchMedias.ok) {
+            throw new Error('Erreur récup data');
+        }
+        const dataMedias = await fetchMedias.json();
+        const medias = dataMedias.media;
+        return { medias };
+    } catch (error) {
+        console.error("Erreur: ", error);
+        return {
+            medias: []
+        };
+    }
+}
+
