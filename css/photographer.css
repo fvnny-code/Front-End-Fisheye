@@ -6,6 +6,33 @@
     background-color: #FAFAFA;
     height: 300px;
     margin: 0 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.photograph-header img {
+    height: 150px;
+    width: 150px;
+    border-radius: 100%;
+    object-fit:cover;
+}
+
+.photographer-info h1{
+    color: #D3573C;
+    font-weight: 200;
+    font-size: 50px;
+    margin: 0;
+}
+
+.photographer-info h2{
+    color: #901C1C;
+    font-weight: 200;
+    margin-bottom: 12px;
+}
+
+.photographer-info p{
+    font-size: 14px;
 }
 
 .contact_button {
