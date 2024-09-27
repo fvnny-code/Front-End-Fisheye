@@ -20,7 +20,7 @@ async function fetchAndDisplayPhotographer() {
 
   if (!photographerId) {
     console.error("Aucun ID de photographe trouvé dans l'URL.");
-    return;
+    window.location = "index.html"; 
   }
 
   const { photographers } = await getPhotographers(); // Récupère les photographes
@@ -28,7 +28,7 @@ async function fetchAndDisplayPhotographer() {
 
   if (!photographer) {
     console.error(`Aucun photographe trouvé avec l'ID ${photographerId}`);
-    return;
+    window.location = "index.html"; 
   }
 
   // Afficher les informations du photographe dans le header
@@ -69,6 +69,11 @@ async function fetchAndDisplayPhotographer() {
   );
   ratingSection.innerHTML = ratingModel.getRatingDOM();
 }
+ // Attacher l'événement pour fermer la modale
+ const closeButton = document.querySelector(".close-modal-icon");
+ if (closeButton) {
+     closeButton.addEventListener("click", closeModal);
+ }
 
 // Initialisation
 fetchAndDisplayPhotographer();
