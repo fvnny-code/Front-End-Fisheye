@@ -2,18 +2,8 @@ import { getPhotographers, getMedias } from "../utils/data.js";
 import { photographerHeaderTemplate } from "../templates/photographerHeader.js";
 import { mediaTemplate } from "../templates/mediaTemplate.js"; // Nouveau template pour les médias
 import { photographerRatingTemplate } from "../templates/photographerRatingTemplate.js"; // Import du template pour l'encart des likes et du tarif
+import { displayModal, closeModal } from "../utils/contactForm.js";
 
-// Fonction pour afficher la modale
-function displayModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "block";
-}
-
-// Fonction pour fermer la modale
-function closeModal() {
-    const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
-}
 
 async function fetchAndDisplayPhotographer() {
   const photographerId = new URLSearchParams(window.location.search).get("id"); // Récupère l'ID du photographe
