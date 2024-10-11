@@ -29,6 +29,67 @@ h1 {
   margin-left: 100px;
 }
 
+.dropdown-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.drpbtn {
+  background-color: #901c1c; 
+  border: none;
+  border-radius: 5px;
+  color: #fff; 
+  padding: 10px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  width: 150px; 
+  text-align: left; 
+  position: relative; 
+  margin-left: 20px;
+}
+
+.chevron {
+  float: right; 
+  margin-left: 10px;
+  color: #fff;
+  
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute; 
+  margin-left: 20px;
+  background-color: #901c1c; 
+  min-width: 150px; 
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); 
+  z-index: 1; 
+}
+.dropdown-content.show {
+  display: block; /* Affiché quand la classe .show est présente */
+}
+
+
+.dropdown-content .dropdown-item {
+  color: #fff; 
+  padding: 10px; 
+  text-decoration: none; 
+  display: block; 
+  cursor: pointer; 
+  border-radius: 0 0 5px 5px;
+}
+.dropdown-item:not(:last-child) {
+  border-bottom: 1px solid #fff;
+}
+
+.dropdown-content .dropdown-item:hover {
+  background-color: #954747; 
+}
+
 .photographer_section {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -55,6 +116,7 @@ h1 {
   color: #901c1c;
   font-size: 16px;
   margin-bottom: 8px;
+  text-decoration: none;
 }
 .photographer_section article p,
 .photographer_section article span {
@@ -76,6 +138,7 @@ h1 {
   color: #d3573c;
   text-decoration: none;
   text-align: center;
+
 }
 .lightbox-overlay {
   position: fixed;
@@ -149,6 +212,12 @@ h1 {
   max-width: 80%;
   max-height: 80%;
   object-fit: contain;
+}
+#lightbox-media-title {
+  margin-left: 10%;
+  color: #d3573c;
+  font-weight: lighter;
+
 }
 
 @media screen and (max-width: 768px) {

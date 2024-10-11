@@ -1,44 +1,44 @@
 #contact_modal {
-    display: none;
+  display: none;
 }
 
 .photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+  background-color: #fafafa;
+  height: 300px;
+  margin: 0 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .photograph-header img {
-    height: 150px;
-    width: 150px;
-    border-radius: 100%;
-    object-fit:cover;
+  height: 150px;
+  width: 150px;
+  border-radius: 100%;
+  object-fit: cover;
 }
 
-.photographer-info h1{
-    color: #D3573C;
-    font-weight: 200;
-    font-size: 50px;
-    margin: 0;
+.photographer-info h1 {
+  color: #d3573c;
+  font-weight: 200;
+  font-size: 50px;
+  margin: 0;
 }
 
-.photographer-info h2{
-    color: #901C1C;
-    font-weight: 200;
-    margin-bottom: 12px;
+.photographer-info h2 {
+  color: #901c1c;
+  font-weight: 200;
+  margin-bottom: 12px;
 }
 
-.photographer-info p{
-    font-size: 14px;
+.photographer-info p {
+  font-size: 14px;
 }
-.photograph-work{
-    margin: 30px 100px
+.photograph-work {
+  margin: 30px 100px;
 }
 
-.photograph-work #sortSelect, 
+/* .photograph-work #sortSelect, 
 #sortSelect option{
     padding: 8px 16px;
     border: none;
@@ -46,163 +46,161 @@
     color: #FAFAFA;
     border-radius: 5px;
     font-family: "DM Sans", sans-serif;
-}
-.photograph-gallery{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 30px;
-    column-gap: 50px;
+} */
+.photograph-gallery {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 30px;
+  column-gap: 50px;
 }
 
-.gallery-item{
-    flex-basis: 28%;
-    margin-bottom: 30px;
- }
- .item img,
- .item video{
-     width: 100%;
-     height: 250px;
-     object-fit: cover;
-     border-radius: 5px;
-     cursor: pointer;
- }
- .media{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    
- }
- .media-title,
- .media-likes {
-    color: #901C1C!important;
- }
-
- .photographer-rating{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding-inline: 12px;
-    position: fixed;
-    bottom: 0;
-    right: 5%;
-    background-color: #DB8876;
-    width: 18%;
-    height: 3rem;
-    color:#312E2E;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    font-weight: bold;
+.gallery-item {
+  flex-basis: 28%;
+  margin-bottom: 30px;
 }
-.rating-container{
-    display: flex;
+.item img,
+.item video {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.media {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.media-title,
+.media-likes {
+  color: #901c1c !important;
+
+}
+
+.photographer-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-inline: 12px;
+  position: fixed;
+  bottom: 0;
+  right: 5%;
+  background-color: #db8876;
+  width: 18%;
+  height: 3rem;
+  color: #312e2e;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  font-weight: bold;
+}
+.rating-container {
+  display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
 }
 .contact_button {
-    font-size: 20px;
-    font-weight: bold;
-    color: white;
-    padding: 11px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  padding: 11px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-
 .modal {
-    display: none; 
-    position: fixed; 
-    top: 50%; 
-    left: 50%;
-    transform: translate(-50%, -50%); 
-    z-index: 1000; 
-    border-radius: 5px;
-    background-color: #DB8876;
-    padding: 35px; 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
-    border-radius: 5px;
-    width: 50%; 
-    max-width: 600px; 
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  border-radius: 5px;
+  background-color: #db8876;
+  padding: 35px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  width: 50%;
+  max-width: 600px;
 }
 
 /* Style pour le fond derrière la modale */
 .modal-overlay {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    z-index: 999;
-    display: none; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  display: none;
 }
 .modal header {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .modal header img {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .modal header h2 {
-    font-size: 3.5rem;
-    font-weight: normal;
-    text-align: center;
+  font-size: 3.5rem;
+  font-weight: normal;
+  text-align: center;
 }
 
 form {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 30px 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 30px 0;
 }
 
 form label {
-    color: #312E2E;
-    font-size: 2rem;
-    padding: 10px 0;
+  color: #312e2e;
+  font-size: 2rem;
+  padding: 10px 0;
 }
 
 form div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    align-items: self-start;
-    margin-bottom: 26px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: self-start;
+  margin-bottom: 26px;
 }
 
-form input, 
+form input,
 form textarea {
-    width: 100%;
-    height: 68px;
-    border: none;
-    border-radius: 5px;
+  width: 100%;
+  height: 68px;
+  border: none;
+  border-radius: 5px;
 }
 form button {
-    font-size: 1.2rem;
-    color: white;
-    padding: 11px 20px;
-    width: 170px;
-    height: 70px;
-    border: none;
-    background-color: #901C1C;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 20px;
-
+  font-size: 1.2rem;
+  color: white;
+  padding: 11px 20px;
+  width: 170px;
+  height: 70px;
+  border: none;
+  background-color: #901c1c;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
 }
 .error-message {
-    color: red;
-    font-size: 0.875em;
-    margin-top: 5px;
-    display: block;
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+  display: block;
 }

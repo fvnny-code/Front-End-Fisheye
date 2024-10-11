@@ -27,8 +27,7 @@ class Photographer {
 
  
 }
-
-// Fonction Factory pour créer une instance de Photographer (déplacer cette factory dans un dossier factory ?)
+// Fonction Factory pour créer une instance de Photographer
 export function photographerTemplate(data) {
   return new Photographer(data);
 }

@@ -27,5 +27,9 @@ export function displayModal() {
 // Fonction pour fermer la modale
 export function closeModal() {
     const modal = document.getElementById("contact_modal");
-    modal.style.display = "none";
+    if (modal) {
+        modal.style.display = "none"; // Masque la modale
+    } else {
+        console.error("La modale est introuvable");
+    }
 }

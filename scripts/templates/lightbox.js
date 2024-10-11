@@ -15,6 +15,7 @@ class Lightbox {
                     <div class="lightbox-media-container" id="lightboxMediaContainer"></div>
                     <button class="lightbox-prev" aria-label="Média précédent">&#8249;</button>
                     <button class="lightbox-next" aria-label="Média suivant">&#8250;</button>
+                     <h3 id="lightbox-media-title"></h3>
                 </div>
             </div>
         `;
@@ -76,6 +77,8 @@ class Lightbox {
     }
 
     mediaContainer.appendChild(mediaElement);
+    const mediaTitle = document.querySelector("#lightbox-media-title");
+    mediaTitle.textContent= currentMedia.title; 
   }
 
   handleKeyboardNavigation(event) {
