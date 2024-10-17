@@ -58,9 +58,11 @@ async function fetchAndDisplayPhotographer() {
 
       // Ajouter un gestionnaire d'événements pour la Lightbox et les likes
       mediaSection.appendChild(mediaDOM);
-      document.getElementById(`${media.id}-media-openLightBox`).addEventListener("click", ()=>{
-        lightbox.openLightbox(index);
-      })
+      document
+        .getElementById(`${media.id}-media-openLightBox`)
+        .addEventListener("click", () => {
+          lightbox.openLightbox(index);
+        });
       document
         .getElementById(`${media.id}-media-like`)
         .addEventListener("click", () => {
@@ -73,22 +75,38 @@ async function fetchAndDisplayPhotographer() {
   displaySortedMedias(photographerMedias);
 
   // Gestion du tri
-  const sortDropdownButton = document.querySelector(".drpbtn"); // Sélection du bouton du dropdown
+  const dropdownSelected = document.querySelector(".dropdown-selected");
   const dropdownContent = document.querySelector(".dropdown-content"); // Sélection du contenu du dropdown
 
   // Gestionnaire d'événements pour afficher/masquer le menu
-  sortDropdownButton.addEventListener("click", () => {
-    dropdownContent.classList.toggle("show"); // Afficher ou masquer le dropdown
-  });
+dropdownSelected.addEventListener("click", () => {
+  const isExpanded = dropdownSelected.getAttribute("aria-expanded") === "true" || false;
+  dropdownSelected.setAttribute("aria-expanded", !isExpanded);
+  dropdownContent.classList.toggle("show"); // Afficher/masquer la liste
+});
 
   // Sélection des items de dropdown
   const dropdownItems = document.querySelectorAll(".dropdown-item");
   dropdownItems.forEach((item) => {
     item.addEventListener("click", (event) => {
+      const selectedValue = event.target.textContent;
       const sortType = event.target.getAttribute("data-value");
-      photographerMedias = sortMedias(photographerMedias, sortType); // Trier les médias
-      displaySortedMedias(photographerMedias); // Réafficher les médias triés
-      dropdownContent.classList.remove("show"); // Fermer le menu après la sélection
+
+      // Mettre à jour le texte du bouton avec l'item sélectionné
+      dropdownSelected.innerHTML = `${selectedValue} <span class="chevron">▼</span>`;
+      // Trier les médias
+      photographerMedias = sortMedias(photographerMedias, sortType);
+      // Réafficher les médias triés
+      displaySortedMedias(photographerMedias);
+
+      // Fermer le menu si on clique à l'extérieur
+      window.addEventListener("click", (event) => {
+        if (!event.target.matches(".dropdown-selected")) {
+          if (dropdownContent.classList.contains("show")) {
+            dropdownContent.classList.remove("show");
+          }
+        }
+      });
     });
   });
 

@@ -39,7 +39,7 @@ h1 {
   display: inline-block;
 }
 
-.drpbtn {
+.dropdown-selected {
   background-color: #901c1c; 
   border: none;
   border-radius: 5px;
@@ -82,6 +82,7 @@ h1 {
   cursor: pointer; 
   border-radius: 0 0 5px 5px;
 }
+
 .dropdown-item:not(:last-child) {
   border-bottom: 1px solid #fff;
 }
