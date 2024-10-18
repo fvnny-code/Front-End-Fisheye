@@ -99,6 +99,15 @@ dropdownSelected.addEventListener("click", () => {
       // Réafficher les médias triés
       displaySortedMedias(photographerMedias);
 
+      // masquer l'élément sélectionné
+      event.target.classList.add("hidden");
+      // réaffichage de l'élément anciennement sélectionné
+      const formerSort = dropdownSelected.getAttribute("data-value");
+      const formerSelectedItem = document.querySelector(`.dropdown-item[data-value=${formerSort}]`);
+      formerSelectedItem.classList.remove("hidden");
+      
+      dropdownSelected.setAttribute("data-value",sortType);
+      
       // Fermer le menu si on clique à l'extérieur
       window.addEventListener("click", (event) => {
         if (!event.target.matches(".dropdown-selected")) {

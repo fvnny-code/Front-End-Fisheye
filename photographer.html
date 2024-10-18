@@ -11,20 +11,20 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
-      <a href="index.html"><img src="assets/images/logo.png" class="logo" /></a>
+    <header role = "banner">
+      <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
     </header>
-    <main id="main">
-      <div class="photograph-header"></div>
+    <main id="main" role="main">
+      <article class="photograph-header" aria-labelledby="photographer-title"></article>
       <div class="photograph-work">
         <div class="dropdown-container">
             <p>Trier par </p> 
             <div class="dropdown">
-              <div class="dropdown-selected">
+              <div class="dropdown-selected" data-value="popularity">
                   Popularité <span class="chevron">▼</span>
               </div>
               <div class="dropdown-content" role="menu">
-                  <div class="dropdown-item" role="menuitem" data-value="popularity">Popularité</div>
+                  <div class="dropdown-item hidden" role="menuitem" data-value="popularity">Popularité</div>
                     <div class="dropdown-item" role="menuitem" data-value="date">Date</div>
                     <div class="dropdown-item" role="menuitem" data-value="title">Titre</div>
               </div>
@@ -34,23 +34,31 @@
       
       <div class="photographer-rating"></div>
 
-      <div id="contact_modal" class="modal">
+      <div id="contact_modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description" aria-modal="true">
         <header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" class="close-modal-icon" />
-        </header>
-        <form>
-          <label for="prenom">Prénom</label>
-          <input type="text" id="prenom" name="prenom" />
-          <label for="nom">Nom</label>
-          <input type="text" id="nom" name="nom" />
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" />
-          <label for="message">Votre message</label>
-          <textarea id="message" name="message"></textarea>
-          <button type="submit">Envoyer</button>
+            <h2 id="modal-title">Contactez-moi</h2>
+            <button class="close-modal-icon" aria-label="Fermer la modale">
+                <img src="assets/icons/close.svg" alt="Fermer la fenêtre de contact" />
+            </button>
+        </header>       
+        <form aria-describedby="modal-description">
+            <div id="modal-description" class="sr-only">Formulaire pour contacter le photographe. Tous les champs sont obligatoires.</div>
+            
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" aria-required="true" aria-invalid="false" />
+    
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" aria-required="true" aria-invalid="false" />
+    
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" aria-required="true" aria-invalid="false" />
+    
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message"     aria-required="true" aria-invalid="false"></textarea>
+    
+            <button type="submit">Envoyer</button>
         </form>
-      </div>
+    </div>
     </main>
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/contactForm.js"></script>

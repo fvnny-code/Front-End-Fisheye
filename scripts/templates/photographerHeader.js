@@ -13,12 +13,12 @@ class PhotographerHeader {
   getPhotographerHeaderDOM() {
       const template = `
           <div class="photographer-info">
-              <h1>${this.name}</h1>
+              <h1 id="photographer-title">${this.name}</h1>
               <h2>${this.city}, ${this.country}</h2>
               <p>${this.tagline}</p>
           </div>
-          <button class="contact_button">Contactez-moi</button>
-          <img src="${this.portrait}" alt="${this.name}">
+          <button class="contact_button" aria-label="Contactez le photographe ${this.name}">Contactez-moi</button>
+          <img src="${this.portrait}" alt="Portrait du photographe ${this.name}">
       `;
       return template;
   }

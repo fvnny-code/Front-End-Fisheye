@@ -14,8 +14,10 @@ class Photographer {
   getUserCardDOM() {
     const template = `
        <article>
-            <img src="${this.portrait}" alt="${this.name}">
-            <h2><a href="photographer.html?id=${this.id}">${this.name}</a></h2>
+            <img src="${this.portrait}" alt="Portrait de ${this.name}">
+            <h2>
+              <a href="photographer.html?id=${this.id}" aria-label="Aller à la page du photographe ${this.name}">${this.name}</a>
+            </h2>
             <p>${this.city}, ${this.country}</p>
             <p>${this.tagline}</p>
             <span>${this.price} €/jour</span>
