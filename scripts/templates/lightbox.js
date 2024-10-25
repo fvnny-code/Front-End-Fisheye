@@ -1,4 +1,4 @@
-class Lightbox {
+export class Lightbox {
   constructor(medias) {
     this.medias = medias;
     this.currentIndex = 0;
@@ -10,7 +10,7 @@ class Lightbox {
     // Créer la structure HTML de la lightbox
     const lightboxHtml = `
             <div class="lightbox-overlay" id="lightboxOverlay" role="dialog" aria-label="Vue agrandie">
-                <div class="lightbox-content">
+                <div    class="lightbox-content">
                     <button class="lightbox-close" aria-label="Fermer la vue agrandie">&times;</button>
                     <div class="lightbox-media-container" id="lightboxMediaContainer"></div>
                     <button class="lightbox-prev" aria-label="Média précédent">&#8249;</button>
@@ -78,7 +78,7 @@ class Lightbox {
 
     mediaContainer.appendChild(mediaElement);
     const mediaTitle = document.querySelector("#lightbox-media-title");
-    mediaTitle.textContent= currentMedia.title; 
+    mediaTitle.textContent = currentMedia.title;
   }
 
   handleKeyboardNavigation(event) {

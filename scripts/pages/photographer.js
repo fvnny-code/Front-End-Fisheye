@@ -56,18 +56,39 @@ async function fetchAndDisplayPhotographer() {
       template.innerHTML = mediaHTML.trim();
       const mediaDOM = template.content.firstElementChild;
 
-      // Ajouter un gestionnaire d'événements pour la Lightbox et les likes
+      // Utiliser le même préfixe que dans mediaTemplate
+      const mediaIdPrefix = `media-${media.id}`;
+
+      // Sélection des éléments pour la Lightbox et les likes
+      const lightboxOpener = mediaDOM.querySelector(
+        `#${mediaIdPrefix}-openLightBox`
+      );
+      const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
+
+      // Gestion de la Lightbox
+      lightboxOpener.addEventListener("click", () => {
+        lightbox.openLightbox(index);
+      });
+      lightboxOpener.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          lightbox.openLightbox(index); // Simule un clic pour ouvrir la Lightbox
+        }
+      });
+
+      // Gestion des likes
+      likeButton.addEventListener("click", () => {
+        incrementLikes(media, sortedMedias, photographer, mediaDOM);
+        likeButton.setAttribute("aria-pressed", "true");
+      });
+      likeButton.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+          event.preventDefault();
+          likeButton.click(); // Simule un clic pour ajouter un like
+        }
+      });
+
       mediaSection.appendChild(mediaDOM);
-      document
-        .getElementById(`${media.id}-media-openLightBox`)
-        .addEventListener("click", () => {
-          lightbox.openLightbox(index);
-        });
-      document
-        .getElementById(`${media.id}-media-like`)
-        .addEventListener("click", () => {
-          incrementLikes(media, photographerMedias, photographer, mediaDOM);
-        });
     });
   }
   // Appel initial pour afficher les médias non triés
