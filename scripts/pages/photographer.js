@@ -70,53 +70,75 @@ async function fetchAndDisplayPhotographer() {
         });
     });
   }
-
   // Appel initial pour afficher les médias non triés
   displaySortedMedias(photographerMedias);
 
   // Gestion du tri
   const dropdownSelected = document.querySelector(".dropdown-selected");
-  const dropdownContent = document.querySelector(".dropdown-content"); // Sélection du contenu du dropdown
+  const dropdownContent = document.querySelector(".dropdown-content");
 
-  // Gestionnaire d'événements pour afficher/masquer le menu
-dropdownSelected.addEventListener("click", () => {
-  const isExpanded = dropdownSelected.getAttribute("aria-expanded") === "true" || false;
-  dropdownSelected.setAttribute("aria-expanded", !isExpanded);
-  dropdownContent.classList.toggle("show"); // Afficher/masquer la liste
-});
+  // Ajouter des attributs d'accessibilité
+  dropdownSelected.setAttribute("tabindex", "0"); // Rendre focusable
+  dropdownSelected.setAttribute("role", "button"); // Indiquer son interactivité
+  dropdownSelected.setAttribute("aria-haspopup", "listbox"); // Indiquer que le menu est une liste
+  dropdownSelected.setAttribute("aria-expanded", "false"); // Indiquer que le menu est fermé par défaut
 
-  // Sélection des items de dropdown
+  // Fonction pour afficher/masquer le menu
+  dropdownSelected.addEventListener("click", () => {
+    const isExpanded =
+      dropdownSelected.getAttribute("aria-expanded") === "true";
+    dropdownSelected.setAttribute("aria-expanded", !isExpanded);
+    dropdownContent.classList.toggle("show");
+  });
+  dropdownSelected.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      // Gérer Enter et Espace
+      event.preventDefault();
+      dropdownSelected.click(); // Simuler un clic pour ouvrir/fermer le menu
+    }
+  });
+
+  // Sélection des items et gestion du tri
   const dropdownItems = document.querySelectorAll(".dropdown-item");
   dropdownItems.forEach((item) => {
+    // Sélection au clic
     item.addEventListener("click", (event) => {
-      const selectedValue = event.target.textContent;
       const sortType = event.target.getAttribute("data-value");
+      dropdownSelected.innerHTML = `${event.target.textContent} <span class="chevron">▼</span>`;
 
-      // Mettre à jour le texte du bouton avec l'item sélectionné
-      dropdownSelected.innerHTML = `${selectedValue} <span class="chevron">▼</span>`;
-      // Trier les médias
+      // Trier et réafficher les médias
       photographerMedias = sortMedias(photographerMedias, sortType);
-      // Réafficher les médias triés
       displaySortedMedias(photographerMedias);
 
-      // masquer l'élément sélectionné
+      // Gestion des classes d'affichage
+      dropdownContent.classList.remove("show");
+      dropdownItems.forEach((el) => el.classList.remove("hidden"));
       event.target.classList.add("hidden");
-      // réaffichage de l'élément anciennement sélectionné
-      const formerSort = dropdownSelected.getAttribute("data-value");
-      const formerSelectedItem = document.querySelector(`.dropdown-item[data-value=${formerSort}]`);
-      formerSelectedItem.classList.remove("hidden");
-      
-      dropdownSelected.setAttribute("data-value",sortType);
-      
-      // Fermer le menu si on clique à l'extérieur
-      window.addEventListener("click", (event) => {
-        if (!event.target.matches(".dropdown-selected")) {
-          if (dropdownContent.classList.contains("show")) {
-            dropdownContent.classList.remove("show");
-          }
-        }
-      });
     });
+
+    // Gestion du clavier
+    item.addEventListener("keydown", (event) => {
+      if (["ArrowDown", "ArrowUp"].includes(event.key)) {
+        event.preventDefault();
+        const currentIndex = [...dropdownItems].indexOf(event.target);
+        const nextIndex =
+          event.key === "ArrowDown" ? currentIndex + 1 : currentIndex - 1;
+        dropdownItems[nextIndex]?.focus();
+      }
+      if (["Enter", " "].includes(event.key)) {
+        event.preventDefault();
+        item.click(); // Simuler un clic pour sélectionner
+      }
+    });
+
+    // Ajouter un rôle et rendre focusable
+    item.setAttribute("tabindex", "0");
+    item.setAttribute("role", "menuitem");
+  });
+
+  // Focus sur le premier item au clic sur le dropdown
+  dropdownSelected.addEventListener("click", () => {
+    dropdownItems[0].focus();
   });
 
   // Calculer la somme des likes et afficher dans l'encart
