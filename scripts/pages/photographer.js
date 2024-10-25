@@ -64,13 +64,20 @@ async function fetchAndDisplayPhotographer() {
         `#${mediaIdPrefix}-openLightBox`
       );
       const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
+      const videoElement = mediaDOM.querySelector("video");
 
-      // Gestion de la Lightbox
-      lightboxOpener.addEventListener("click", () => {
-        lightbox.openLightbox(index);
+      // Gestion de la Lightbox - ajout d'une vérification pour éviter le déclenchement sur les vidéos
+      lightboxOpener.addEventListener("click", (event) => {
+        if (!event.target.closest("video")) {
+          // Si ce n'est pas une vidéo, on ouvre la Lightbox
+          lightbox.openLightbox(index);
+        }
       });
       lightboxOpener.addEventListener("keydown", (event) => {
-        if (event.key === "Enter" || event.key === " ") {
+        if (
+          (event.key === "Enter" || event.key === " ") &&
+          !event.target.closest("video")
+        ) {
           event.preventDefault();
           lightbox.openLightbox(index); // Simule un clic pour ouvrir la Lightbox
         }
@@ -87,6 +94,20 @@ async function fetchAndDisplayPhotographer() {
           likeButton.click(); // Simule un clic pour ajouter un like
         }
       });
+
+      // Lecture/Pause des vidéos avec le clavier
+      if (videoElement) {
+        videoElement.addEventListener("keydown", (event) => {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            if (videoElement.paused) {
+              videoElement.play();
+            } else {
+              videoElement.pause();
+            }
+          }
+        });
+      }
 
       mediaSection.appendChild(mediaDOM);
     });
