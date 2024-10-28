@@ -6,6 +6,14 @@ import { lightboxFactory } from "../templates/lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 import { sortMedias } from "../utils/sort.js";
 
+// Fonction pour activer ou désactiver le focus des éléments en arrière-plan
+export function togglePageFocus(enable) {
+  const elements = document.querySelectorAll("header, main, footer");
+  elements.forEach((element) => {
+    element.setAttribute("aria-hidden", !enable);
+  });
+}
+
 async function fetchAndDisplayPhotographer() {
   const photographerId = new URLSearchParams(window.location.search).get("id");
 
@@ -66,22 +74,24 @@ async function fetchAndDisplayPhotographer() {
       const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
       const videoElement = mediaDOM.querySelector("video");
 
-      // Gestion de la Lightbox - ajout d'une vérification pour éviter le déclenchement sur les vidéos
       lightboxOpener.addEventListener("click", (event) => {
-        if (!event.target.closest("video")) {
-          // Si ce n'est pas une vidéo, on ouvre la Lightbox
-          lightbox.openLightbox(index);
-        }
+        lightbox.openLightbox(index);
       });
       lightboxOpener.addEventListener("keydown", (event) => {
-        if (
-          (event.key === "Enter" || event.key === " ") &&
-          !event.target.closest("video")
-        ) {
+        if (event.key === "Enter") {
           event.preventDefault();
           lightbox.openLightbox(index); // Simule un clic pour ouvrir la Lightbox
         }
       });
+      // Lecture/Pause des vidéos avec le clavier
+      if (videoElement) {
+        videoElement.addEventListener("keydown", (event) => {
+          if (event.key === " ") {
+            event.preventDefault();
+            videoElement.paused ? videoElement.play() : videoElement.pause();
+          }
+        });
+      }
 
       // Gestion des likes
       likeButton.addEventListener("click", () => {
@@ -94,20 +104,6 @@ async function fetchAndDisplayPhotographer() {
           likeButton.click(); // Simule un clic pour ajouter un like
         }
       });
-
-      // Lecture/Pause des vidéos avec le clavier
-      if (videoElement) {
-        videoElement.addEventListener("keydown", (event) => {
-          if (event.key === "Enter" || event.key === " ") {
-            event.preventDefault();
-            if (videoElement.paused) {
-              videoElement.play();
-            } else {
-              videoElement.pause();
-            }
-          }
-        });
-      }
 
       mediaSection.appendChild(mediaDOM);
     });

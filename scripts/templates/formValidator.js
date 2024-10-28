@@ -23,7 +23,7 @@ class FormValidator {
   }
 
   isValidEmail(email) {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\w@]+$/;
     return emailPattern.test(email);
   }
 
