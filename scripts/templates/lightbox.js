@@ -1,4 +1,9 @@
 import { togglePageFocus } from "../utils/focusUtils.js";
+import {
+  toggleFocusOnBackground,
+  trapFocusInElement,
+  enableKeyboardNavigation,
+} from "../utils/accessibility.js";
 
 export class Lightbox {
   constructor(medias) {
@@ -43,13 +48,21 @@ export class Lightbox {
     this.currentIndex = index;
     this.updateLightboxMedia();
     this.lightboxElement.style.display = "flex";
-    togglePageFocus(false); // Désactive le focus des éléments en arrière-plan
+
     this.lightboxElement.querySelector(".lightbox-close").focus();
+    toggleFocusOnBackground(false); // Désactiver le focus en arrière-plan
+    trapFocusInElement(this.lightboxElement); // Piéger le focus dans la lightbox
+    enableKeyboardNavigation(this.lightboxElement, {
+      onNext: () => this.navigate(1),
+      onPrev: () => this.navigate(-1),
+      onClose: () => this.closeLightbox(),
+    });
   }
 
   closeLightbox() {
     this.lightboxElement.style.display = "none";
     togglePageFocus(true); // Réactive le focus des éléments en arrière-plan
+    toggleFocusOnBackground(true); // Réactiver le focus en arrière-plan
   }
 
   navigate(direction) {

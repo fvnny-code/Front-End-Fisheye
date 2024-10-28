@@ -1,12 +1,11 @@
 import { getPhotographers, getMedias } from "../utils/data.js";
+import { toggleFocusOnBackground } from "../utils/accessibility.js";
 import { photographerHeaderTemplate } from "../templates/photographerHeader.js";
 import { mediaTemplate, getTotalLikes } from "../templates/mediaTemplate.js";
 import { photographerRatingTemplate } from "../templates/photographerRatingTemplate.js";
 import { lightboxFactory } from "../templates/lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 import { sortMedias } from "../utils/sort.js";
-
-
 
 async function fetchAndDisplayPhotographer() {
   const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -32,9 +31,10 @@ async function fetchAndDisplayPhotographer() {
   // Ajouter le gestionnaire d'événements au bouton "Contactez-moi"
   const contactButton = document.querySelector(".contact_button");
   if (contactButton) {
-    contactButton.addEventListener("click", displayModal);
-  } else {
-    console.error("Le bouton Contactez-moi est introuvable");
+    contactButton.addEventListener("click", () => {
+      displayModal();
+      toggleFocusOnBackground(false); // Désactiver le focus en arrière-plan
+    });
   }
 
   // Récupérer et afficher les médias du photographe
