@@ -1,4 +1,4 @@
-import { togglePageFocus } from "../pages/photographer.js"; // Assurez-vous que la fonction est exportée
+import { togglePageFocus } from "../utils/focusUtils.js";
 
 export class Lightbox {
   constructor(medias) {

@@ -6,13 +6,7 @@ import { lightboxFactory } from "../templates/lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 import { sortMedias } from "../utils/sort.js";
 
-// Fonction pour activer ou désactiver le focus des éléments en arrière-plan
-export function togglePageFocus(enable) {
-  const elements = document.querySelectorAll("header, main, footer");
-  elements.forEach((element) => {
-    element.setAttribute("aria-hidden", !enable);
-  });
-}
+
 
 async function fetchAndDisplayPhotographer() {
   const photographerId = new URLSearchParams(window.location.search).get("id");
