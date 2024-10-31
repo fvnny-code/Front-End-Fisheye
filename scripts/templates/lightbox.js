@@ -21,7 +21,7 @@ export class Lightbox {
               <div class="lightbox-media-container" id="lightboxMediaContainer"></div>
               <button class="lightbox-prev" aria-label="Média précédent">&#8249;</button>
               <button class="lightbox-next" aria-label="Média suivant">&#8250;</button>
-               <h3 id="lightbox-media-title"></h3>
+               <h3 id="lightbox-media-title" aria-hidden="false"></h3>
           </div>
       </div>
     `;
@@ -99,8 +99,10 @@ export class Lightbox {
     }
 
     mediaContainer.appendChild(mediaElement);
-    document.querySelector("#lightbox-media-title").textContent =
-      currentMedia.title;
+    // Mettre à jour le titre avec aria-live pour que le lecteur d'écran l'annonce
+    const mediaTitle = document.querySelector("#lightbox-media-title");
+    mediaTitle.textContent = currentMedia.title;
+    mediaTitle.setAttribute("aria-live", "polite");
   }
 
   handleKeyboardNavigation(event) {

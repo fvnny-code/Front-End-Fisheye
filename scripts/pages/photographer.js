@@ -67,7 +67,10 @@ async function fetchAndDisplayPhotographer() {
       );
       const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
       const videoElement = mediaDOM.querySelector("video");
-
+      
+      lightboxOpener.addEventListener("click", () => {
+        lightbox.openLightbox(index);
+      });
       lightboxOpener.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
