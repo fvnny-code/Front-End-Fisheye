@@ -53,7 +53,7 @@ async function fetchAndDisplayPhotographer() {
     mediaSection.innerHTML = ""; // Vider la galerie avant d'ajouter les médias triés
 
     sortedMedias.forEach((media, index) => {
-      const mediaHTML = mediaFactory  (media);
+      const mediaHTML = mediaFactory(media);
       const template = document.createElement("template");
       template.innerHTML = mediaHTML.trim();
       const mediaDOM = template.content.firstElementChild;
@@ -68,9 +68,6 @@ async function fetchAndDisplayPhotographer() {
       const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
       const videoElement = mediaDOM.querySelector("video");
 
-      lightboxOpener.addEventListener("click", (event) => {
-        lightbox.openLightbox(index);
-      });
       lightboxOpener.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
