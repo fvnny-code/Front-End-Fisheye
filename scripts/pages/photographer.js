@@ -1,7 +1,7 @@
 import { getPhotographers, getMedias } from "../utils/data.js";
 import { toggleFocusOnBackground } from "../utils/accessibility.js";
 import { photographerHeaderTemplate } from "../templates/photographerHeader.js";
-import { mediaTemplate, getTotalLikes } from "../templates/mediaTemplate.js";
+import { mediaFactory, getTotalLikes } from "../factories/mediaFactory.js";
 import { photographerRatingTemplate } from "../templates/photographerRatingTemplate.js";
 import { lightboxFactory } from "../templates/lightbox.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
@@ -53,7 +53,7 @@ async function fetchAndDisplayPhotographer() {
     mediaSection.innerHTML = ""; // Vider la galerie avant d'ajouter les médias triés
 
     sortedMedias.forEach((media, index) => {
-      const mediaHTML = mediaTemplate(media);
+      const mediaHTML = mediaFactory  (media);
       const template = document.createElement("template");
       template.innerHTML = mediaHTML.trim();
       const mediaDOM = template.content.firstElementChild;

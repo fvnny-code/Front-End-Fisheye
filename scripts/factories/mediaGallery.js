@@ -1,5 +1,5 @@
 import { mediaTemplate } from "./mediaTemplate.js";
-import { lightboxFactory } from "./lightbox.js";
+import { lightboxFactory } from "../templates/lightbox.js";
 
 export class MediaGallery {
   constructor(medias, mediaSection, updateLikesDisplay, incrementLikes) {

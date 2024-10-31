@@ -1,4 +1,4 @@
-// accessibility.js
+
 
 // Fonction pour activer ou désactiver le focus sur les éléments en arrière-plan
 export function toggleFocusOnBackground(enable) {

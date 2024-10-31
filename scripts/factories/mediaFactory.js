@@ -1,5 +1,5 @@
 // Template pour afficher les médias du photographe
-export function mediaTemplate(media) {
+export function mediaFactory(media) {
   const { title, image, video, likes, id, date, price } = media;
   media.isLiked = media.isLiked || false;
 
