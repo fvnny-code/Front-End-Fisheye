@@ -67,17 +67,21 @@ async function fetchAndDisplayPhotographer() {
       );
       const likeButton = mediaDOM.querySelector(`#${mediaIdPrefix}-like`);
       const videoElement = mediaDOM.querySelector("video");
-      
+
+      // Gestion de l'ouverture de la lightbox avec index
       lightboxOpener.addEventListener("click", () => {
-        lightbox.openLightbox(index);
+        console.log(sortedMedias.indexOf(media));
+        lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
       });
       lightboxOpener.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-          lightbox.openLightbox(index); // Simule un clic pour ouvrir la Lightbox
+          console.log(sortedMedias.indexOf(media));
+          lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
         }
       });
-      // Lecture/Pause des vidéos avec le clavier
+
+      // Lecture/Pause des vidéos avec la barre d'espace
       if (videoElement) {
         videoElement.addEventListener("keydown", (event) => {
           if (event.key === " ") {
@@ -140,6 +144,7 @@ async function fetchAndDisplayPhotographer() {
 
       // Trier et réafficher les médias
       photographerMedias = sortMedias(photographerMedias, sortType);
+      lightbox.medias = photographerMedias;
       displaySortedMedias(photographerMedias);
 
       // Gestion des classes d'affichage

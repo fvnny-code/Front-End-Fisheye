@@ -39,6 +39,16 @@ export class Lightbox {
     nextButton.addEventListener("click", () => this.navigate(1));
     prevButton.addEventListener("click", () => this.navigate(-1));
 
+    nextButton.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        this.navigate(1);
+      }
+    });
+    prevButton.addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        this.navigate(-1);
+      }
+    });
     document.addEventListener("keydown", (event) =>
       this.handleKeyboardNavigation(event)
     );
@@ -112,9 +122,9 @@ export class Lightbox {
     const mediaElement = mediaContainer.querySelector("video");
 
     if (event.key === "ArrowRight") {
-      this.navigate(1);
-    } else if (event.key === "ArrowLeft") {
       this.navigate(-1);
+    } else if (event.key === "ArrowLeft") {
+      this.navigate(1);
     } else if (event.key === "Escape") {
       this.closeLightbox();
     } else if (event.key === " " && mediaElement) {
