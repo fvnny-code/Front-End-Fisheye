@@ -21,7 +21,7 @@ export function mediaFactory(media) {
               : ""
           }
           <div class="media">
-            <h3 class="media-title">${title}</h3>
+            <h3 id= "media-title-${id}"class="media-title">${title}</h3>
             <p 
               id="${mediaIdPrefix}-like" 
               class="media-likes" 

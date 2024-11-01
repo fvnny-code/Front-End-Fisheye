@@ -2,7 +2,6 @@ import { togglePageFocus } from "../utils/focusUtils.js";
 import {
   toggleFocusOnBackground,
   trapFocusInElement,
-  enableKeyboardNavigation,
 } from "../utils/accessibility.js";
 
 export class Lightbox {
@@ -38,17 +37,6 @@ export class Lightbox {
     const prevButton = this.lightboxElement.querySelector(".lightbox-prev");
     nextButton.addEventListener("click", () => this.navigate(1));
     prevButton.addEventListener("click", () => this.navigate(-1));
-
-    nextButton.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        this.navigate(1);
-      }
-    });
-    prevButton.addEventListener("keydown", (event) => {
-      if (event.key === "Enter") {
-        this.navigate(-1);
-      }
-    });
     document.addEventListener("keydown", (event) =>
       this.handleKeyboardNavigation(event)
     );
@@ -62,11 +50,6 @@ export class Lightbox {
     this.lightboxElement.querySelector(".lightbox-close").focus();
     toggleFocusOnBackground(false); // Désactiver le focus en arrière-plan
     trapFocusInElement(this.lightboxElement); // Piéger le focus dans la lightbox
-    enableKeyboardNavigation(this.lightboxElement, {
-      onNext: () => this.navigate(1),
-      onPrev: () => this.navigate(-1),
-      onClose: () => this.closeLightbox(),
-    });
   }
 
   closeLightbox() {
@@ -98,14 +81,6 @@ export class Lightbox {
       mediaElement = document.createElement("video");
       mediaElement.src = `assets/media/${currentMedia.video}`;
       mediaElement.controls = true;
-
-      // Lecture/Pause de la vidéo dans la lightbox avec la barre d'espace
-      mediaElement.addEventListener("keydown", (event) => {
-        if (event.key === " ") {
-          event.preventDefault();
-          mediaElement.paused ? mediaElement.play() : mediaElement.pause();
-        }
-      });
     }
 
     mediaContainer.appendChild(mediaElement);
@@ -121,13 +96,9 @@ export class Lightbox {
     );
     const mediaElement = mediaContainer.querySelector("video");
 
-    if (event.key === "ArrowRight") {
-      this.navigate(-1);
-    } else if (event.key === "ArrowLeft") {
-      this.navigate(1);
-    } else if (event.key === "Escape") {
+    if (event.key === "Escape") {
       this.closeLightbox();
-    } else if (event.key === " " && mediaElement) {
+    } else if (event.code === "Space" && mediaElement) {
       // Espace pour vidéo
       event.preventDefault(); // Empêche le comportement par défaut
       if (mediaElement.paused) {

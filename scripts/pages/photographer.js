@@ -52,7 +52,7 @@ async function fetchAndDisplayPhotographer() {
   function displaySortedMedias(sortedMedias) {
     mediaSection.innerHTML = ""; // Vider la galerie avant d'ajouter les médias triés
 
-    sortedMedias.forEach((media, index) => {
+    sortedMedias.forEach((media) => {
       const mediaHTML = mediaFactory(media);
       const template = document.createElement("template");
       template.innerHTML = mediaHTML.trim();
@@ -70,17 +70,18 @@ async function fetchAndDisplayPhotographer() {
 
       // Gestion de l'ouverture de la lightbox avec index
       lightboxOpener.addEventListener("click", () => {
-        console.log(sortedMedias.indexOf(media));
         lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
       });
       lightboxOpener.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-          console.log(sortedMedias.indexOf(media));
           lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
         }
       });
-
+      const title = mediaDOM.querySelector(`#media-title-${media.id}`);
+      title.addEventListener("click", () => {
+        lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
+      });
       // Lecture/Pause des vidéos avec la barre d'espace
       if (videoElement) {
         videoElement.addEventListener("keydown", (event) => {
