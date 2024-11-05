@@ -1,4 +1,4 @@
-class PhotographerRating {
+export class PhotographerRating {
   constructor(likes, price) {
     this.likes = likes;
     this.price = price;
@@ -21,6 +21,6 @@ class PhotographerRating {
 }
 
 // Fonction factory pour créer une instance de PhotographerRating
-export function photographerRatingTemplate(likes, price) {
+export function photographerRatingFactory(likes, price) {
   return new PhotographerRating(likes, price);
 }

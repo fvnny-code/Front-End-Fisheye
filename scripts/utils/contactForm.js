@@ -1,4 +1,4 @@
-import { formValidatorFactory } from "../templates/formValidator.js"; // Mise à jour du chemin de l'import
+import { formValidatorFactory } from "./formValidator.js"; // Mise à jour du chemin de l'import
 
 let openButton = null; // Variable pour stocker l'élément qui a ouvert la modale
 

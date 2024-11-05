@@ -1,5 +1,5 @@
-import { mediaTemplate } from "./mediaTemplate.js";
-import { lightboxFactory } from "../templates/lightbox.js";
+import { mediaFactory } from "./mediaFactory.js";
+import { lightboxFactory } from "./lightboxFactory.js";
 
 export class MediaGallery {
   constructor(medias, mediaSection, updateLikesDisplay, incrementLikes) {
@@ -14,7 +14,7 @@ export class MediaGallery {
   displayMedias() {
     this.mediaSection.innerHTML = "";
     this.medias.forEach((media, index) => {
-      const mediaHTML = mediaTemplate(media);
+      const mediaHTML = mediaFactory(media);
       const template = document.createElement("template");
       template.innerHTML = mediaHTML.trim();
       const mediaDOM = template.content.firstElementChild;

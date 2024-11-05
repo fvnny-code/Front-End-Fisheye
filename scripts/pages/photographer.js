@@ -1,11 +1,11 @@
 import { getPhotographers, getMedias } from "../utils/data.js";
 import { toggleFocusOnBackground } from "../utils/accessibility.js";
-import { photographerHeaderTemplate } from "../templates/photographerHeader.js";
+import { photographerHeaderFactory } from "../factories/photographerHeaderFactory.js";
 import { mediaFactory, getTotalLikes } from "../factories/mediaFactory.js";
-import { photographerRatingTemplate } from "../templates/photographerRatingTemplate.js";
-import { lightboxFactory } from "../templates/lightbox.js";
+import { lightboxFactory } from "../factories/lightboxFactory.js";
 import { displayModal, closeModal } from "../utils/contactForm.js";
 import { sortMedias } from "../utils/sort.js";
+import { photographerRatingFactory } from "../factories/photographerRatingFactory.js";
 
 async function fetchAndDisplayPhotographer() {
   const photographerId = new URLSearchParams(window.location.search).get("id");
@@ -25,7 +25,7 @@ async function fetchAndDisplayPhotographer() {
 
   // Afficher les informations du photographe dans le header
   const photographerHeader = document.querySelector(".photograph-header");
-  const photographerModel = photographerHeaderTemplate(photographer);
+  const photographerModel = photographerHeaderFactory(photographer);
   photographerHeader.innerHTML = photographerModel.getPhotographerHeaderDOM();
 
   // Ajouter le gestionnaire d'événements au bouton "Contactez-moi"
@@ -70,17 +70,17 @@ async function fetchAndDisplayPhotographer() {
 
       // Gestion de l'ouverture de la lightbox avec index
       lightboxOpener.addEventListener("click", () => {
-        lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
+        lightbox.openLightbox(sortedMedias.indexOf(media));
       });
       lightboxOpener.addEventListener("keydown", (event) => {
         if (event.key === "Enter") {
           event.preventDefault();
-          lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
+          lightbox.openLightbox(sortedMedias.indexOf(media));
         }
       });
       const title = mediaDOM.querySelector(`#media-title-${media.id}`);
       title.addEventListener("click", () => {
-        lightbox.openLightbox(sortedMedias.indexOf(media)); // Ouvrir la lightbox avec le média sélectionné
+        lightbox.openLightbox(sortedMedias.indexOf(media));
       });
       // Lecture/Pause des vidéos avec la barre d'espace
       if (videoElement) {
@@ -131,7 +131,7 @@ async function fetchAndDisplayPhotographer() {
     if (event.key === "Enter" || event.key === " ") {
       // Gérer Enter et Espace
       event.preventDefault();
-      dropdownSelected.click(); // Simuler un clic pour ouvrir/fermer le menu
+      dropdownSelected.click();
     }
   });
 
@@ -210,7 +210,7 @@ function incrementLikes(media, medias, photographer, mediaDOM) {
 function updateLikesDisplay(medias, price) {
   const totalLikes = getTotalLikes(medias);
   const ratingSection = document.querySelector(".photographer-rating");
-  const ratingModel = photographerRatingTemplate(totalLikes, price);
+  const ratingModel = photographerRatingFactory(totalLikes, price);
 
   if (ratingSection) {
     ratingSection.innerHTML = ratingModel.getRatingDOM();

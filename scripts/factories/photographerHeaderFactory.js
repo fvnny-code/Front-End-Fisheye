@@ -25,6 +25,6 @@ class PhotographerHeader {
 }
 
 // Fonction pour créer une instance de PhotographerHeader
-export function photographerHeaderTemplate(data) {
+export function photographerHeaderFactory(data) {
   return new PhotographerHeader(data);
 }

@@ -1,4 +1,4 @@
-// Classe Photographer qui encapsule les données d'un photographe (déplacer cette class dans un dossier model ?)
+// Classe Photographer qui encapsule les données d'un photographe
 class Photographer {
   constructor({ name, portrait, city, country, tagline, price, id }) {
     this.name = name;

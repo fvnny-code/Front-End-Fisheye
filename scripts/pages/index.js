@@ -12,7 +12,7 @@ async function displayData(photographers) {
     // Créer un élément wrapper pour gérer le focus et les attributs ARIA
     const wrapper = document.createElement("div");
     wrapper.innerHTML = userCardDOM;
-    wrapper.classList.add("photographer-card"); // Classe pour le style
+    wrapper.classList.add("photographer-card"); 
 
     // Ajouter tabindex et rôle pour l’accessibilité
     wrapper.setAttribute("tabindex", "0"); // Rendre focusable
