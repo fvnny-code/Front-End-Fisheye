@@ -1,4 +1,4 @@
-// Classe de validation du formulaire
+
 class FormValidator {
   constructor(form) {
     this.form = form;

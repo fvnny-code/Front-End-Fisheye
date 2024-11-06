@@ -14,4 +14,6 @@ export class LikeManager {
       const ratingSection = document.querySelector(".photographer-rating");
       ratingSection.innerHTML = `${totalLikes} ❤`;
     }
+    
   }
+  
