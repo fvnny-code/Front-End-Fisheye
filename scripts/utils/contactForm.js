@@ -4,7 +4,8 @@ let openButton = null; // Variable pour stocker l'élément qui a ouvert la moda
 
 // Fonction pour afficher la modale
 export function displayModal() {
-  const modal = document.getElementById("contact_modal");
+  const modal = document.querySelector("#contact_modal");
+  modal.tabIndex = 0;
   openButton = document.activeElement; // Stocker l'élément qui a déclenché l'ouverture
 
   modal.style.display = "block";
@@ -12,6 +13,7 @@ export function displayModal() {
 
   // Attacher l'événement de soumission du formulaire à la modale
   const form = document.querySelector("#contact_modal form");
+  form.tabIndex= 0;
   if (form) {
     const formValidator = formValidatorFactory(form);
 

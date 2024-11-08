@@ -7,7 +7,7 @@ export class PhotographerRating {
   // Méthode pour générer le DOM de l'encart des likes et du tarif
   getRatingDOM() {
     const template = `
-        <div class="rating-container" aria-label="Encart des likes et tarif journalier">
+        <div class="rating-container" aria-label="Encart des likes et tarif journalier" aria-labelledby="rating">
             <p class="likes" aria-live="polite" aria-label="Nombre total de likes">
                 <span id="total-likes">${this.likes}</span> ❤
             </p>

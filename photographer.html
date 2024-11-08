@@ -15,7 +15,7 @@
       <a href="index.html"><img src="assets/images/logo.png" class="logo" alt="fisheye logo"/></a>
     </header>
     <main id="main" role="main">
-      <article class="photograph-header" aria-labelledby="photographer-title"></article>
+      <section class="photograph-header" aria-labelledby="photographer-title"></section>
       <div class="photograph-work">
         <div class="dropdown-container">
             <p>Trier par </p> 
@@ -30,31 +30,31 @@
               </div>
           </div>
         </div>
-        <div class="photograph-gallery" id="gallery"></div>
+        <section class="photograph-gallery" id="gallery"></section>
       
-      <div class="photographer-rating"></div>
+      <div class="photographer-rating" id="rating" role="note" tabindex="0"></div>
 
-      <div id="contact_modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description" aria-modal="true">
+      <div id="contact_modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-describedby="modal-description" aria-modal="true" tabindex="0">
         <header>
             <h2 id="modal-title">Contactez-moi</h2>
             <button class="close-modal-icon" aria-label="Fermer la modale">
                 <img src="assets/icons/close.svg" alt="Fermer la fenêtre de contact" />
             </button>
         </header>       
-        <form aria-describedby="modal-description">
-            <div id="modal-description" class="sr-only">Formulaire pour contacter le photographe. Tous les champs sont obligatoires.</div>
+        <form aria-describedby="modal-description" tabindex="-1" role="dialog">
+            <div id="modal-description" class="sr-only" >Formulaire pour contacter le photographe. Tous les champs sont obligatoires.</div>
             
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" aria-required="true" aria-invalid="false" />
+            <label for="prenom"  >Prénom</label>
+            <input type="text" id="prenom" name="prenom" aria-required="true" aria-invalid="false" aria-label="prénom" placeholder="prénom" />
     
-            <label for="nom">Nom</label>
-            <input type="text" id="nom" name="nom" aria-required="true" aria-invalid="false" />
+            <label for="nom">Nom</label aria-hidden="true" >
+            <input type="text" id="nom" name="nom" aria-required="true" aria-invalid="false" aria-label="nom" />
     
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" aria-required="true" aria-invalid="false" />
+            <label for="email" aria-hidden="true" >Email</label>
+            <input type="email" id="email" name="email" aria-required="true" aria-invalid="false" aria-label="email" />
     
-            <label for="message">Votre message</label>
-            <textarea id="message" name="message"     aria-required="true" aria-invalid="false"></textarea>
+            <label for="message" aria-hidden="true" >Votre message</label>
+            <textarea id="message" name="message" aria-required="true" aria-invalid="false" aria-label="message" ></textarea>
     
             <button type="submit">Envoyer</button>
         </form>

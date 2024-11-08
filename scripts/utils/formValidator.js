@@ -1,4 +1,3 @@
-
 class FormValidator {
   constructor(form) {
     this.form = form;
@@ -31,6 +30,9 @@ class FormValidator {
     const errorMessage = document.createElement("span");
     errorMessage.className = "error-message";
     errorMessage.textContent = message;
+    errorMessage.ariaHidden = false;
+    errorMessage.tabIndex = 0;
+    errorMessage.ariaInvalid = true;
     field.parentElement.appendChild(errorMessage);
     // Ajoute le message d'erreur directement après le champ concerné
     field.insertAdjacentElement("afterend", errorMessage);

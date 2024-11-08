@@ -27,7 +27,7 @@ export function toggleFocusOnBackground(enable) {
   export function trapFocusInElement(element) {
     const focusableSelectors = [
       'a[href]', 'button', 'textarea', 'input[type="text"]',
-      'input[type="radio"]', 'input[type="checkbox"]', 'select'
+      'input[type="radio"]', 'input[type="checkbox"]', 'select', 'input[type="email"]' 
     ];
     const focusableElements = element.querySelectorAll(focusableSelectors.join(", "));
     const firstFocusable = focusableElements[0];
