@@ -41,20 +41,20 @@
                 <img src="assets/icons/close.svg" alt="Fermer la fenêtre de contact" />
             </button>
         </header>       
-        <form aria-describedby="modal-description" tabindex="-1" role="dialog">
+        <form aria-describedby="modal-description" role="dialog" tabindex="-1">
             <div id="modal-description" class="sr-only" >Formulaire pour contacter le photographe. Tous les champs sont obligatoires.</div>
             
             <label for="prenom"  >Prénom</label>
-            <input type="text" id="prenom" name="prenom" aria-required="true" aria-invalid="false" aria-label="prénom" placeholder="prénom" />
+            <input type="text" autocomplete="prenom" name="prenom" id="prenom" aria-required="true" aria-invalid="false" aria-label="prénom"/>
     
-            <label for="nom">Nom</label aria-hidden="true" >
-            <input type="text" id="nom" name="nom" aria-required="true" aria-invalid="false" aria-label="nom" />
+            <label for="nom">Nom</label >
+            <input type="text" autocomplete="nom" name="nom" id="nom" aria-required="true" aria-invalid="false" aria-label="nom" />
     
-            <label for="email" aria-hidden="true" >Email</label>
-            <input type="email" id="email" name="email" aria-required="true" aria-invalid="false" aria-label="email" />
+            <label for="email" >Email</label>
+            <input type="email" autocomplete="off" name="email" id="email" aria-required="true" aria-invalid="false" aria-label="email" />
     
-            <label for="message" aria-hidden="true" >Votre message</label>
-            <textarea id="message" name="message" aria-required="true" aria-invalid="false" aria-label="message" ></textarea>
+            <label for="message" >Votre message</label>
+            <textarea id="message" name="message" id="message" aria-required="true" aria-invalid="false" aria-label="message" ></textarea>
     
             <button type="submit">Envoyer</button>
         </form>
