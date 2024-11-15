@@ -2,11 +2,19 @@
 
 // Fonction pour activer ou désactiver le focus sur les éléments en arrière-plan
 export function toggleFocusOnBackground(enable) {
-    const focusableElements = document.querySelectorAll("header, main, footer");
-    focusableElements.forEach(element => {
+  const focusableElements = document.querySelectorAll("header, main, footer");
+
+  focusableElements.forEach(element => {
+      // Ne pas appliquer aria-hidden sur la modale si elle est active
+      const isModalActive = document.getElementById("contact_modal").style.display === "block";
+
+      if (isModalActive && element.contains(document.getElementById("contact_modal"))) {
+          return; // Ignore la modale et ses ancêtres
+      }
+
       element.setAttribute("aria-hidden", !enable);
-    });
-  }
+  });
+}
   
   // Fonction pour activer la navigation au clavier
   export function enableKeyboardNavigation(container, handlers = {}) {
