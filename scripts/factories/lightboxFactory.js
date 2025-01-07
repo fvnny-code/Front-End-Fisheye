@@ -75,11 +75,11 @@ export class Lightbox {
 
     if (currentMedia.image) {
       mediaElement = document.createElement("img");
-      mediaElement.src = `assets/media/${currentMedia.image}`;
+      mediaElement.src = `assets/Media/${currentMedia.image}`;
       mediaElement.alt = currentMedia.title;
     } else if (currentMedia.video) {
       mediaElement = document.createElement("video");
-      mediaElement.src = `assets/media/${currentMedia.video}`;
+      mediaElement.src = `assets/Media/${currentMedia.video}`;
       mediaElement.controls = true;
     }
 
