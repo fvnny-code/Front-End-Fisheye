@@ -15,7 +15,7 @@ export async function getMedias() {
     // Déterminer le chemin de base dynamique pour les ressources
     const baseUrl =
       window.location.hostname === "localhost"
-        ? "../assets/media/"
+        ? "../assets/Media/"
         : "https://fvnny-code.github.io/Front-End-Fisheye/assets/Media/";
 
     // Récupérer les données des médias depuis le fichier JSON
