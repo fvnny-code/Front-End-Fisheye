@@ -9,13 +9,13 @@ export function mediaFactory(media) {
         <article class="item" tabindex="0" aria-label="Media titled ${title}">
           ${
             image
-              ? `<img src="assets/media/${image}" alt="${title}" id="${mediaIdPrefix}-openLightBox" tabindex="0" />`
+              ? `<img src="assets/Media/${image}" alt="${title}" id="${mediaIdPrefix}-openLightBox" tabindex="0" />`
               : ""
           }
           ${
             video
               ? `<video controls tabindex="0" id="${mediaIdPrefix}-openLightBox" aria-label="Video titled ${title}">
-                   <source src="assets/media/${video}" type="video/mp4">
+                   <source src="assets/Media/${video}" type="video/mp4">
                  </video>`
               : ""
           }
