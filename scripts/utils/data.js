@@ -12,13 +12,30 @@ export async function getPhotographers() {
 
 export async function getMedias() {
   try {
+    // Déterminer le chemin de base dynamique pour les ressources
+    const baseUrl =
+      window.location.hostname === "localhost"
+        ? "../assets/media/"
+        : "https://fvnny-code.github.io/Front-End-Fisheye/assets/media/";
+
+    // Récupérer les données des médias depuis le fichier JSON
     const fetchMedias = await fetch("data/photographers.json");
     if (!fetchMedias.ok) {
       throw new Error("Erreur récup data");
     }
     const dataMedias = await fetchMedias.json();
     const medias = dataMedias.media;
-    return { medias };
+
+    // Mettre à jour le chemin des médias pour qu'il soit dynamique
+    const mediasWithFullPath = medias.map((media) => {
+      return {
+        ...media,
+        // Ajout du chemin complet pour chaque média
+        src: `${baseUrl}${media.fileName}`,
+      };
+    });
+
+    return { medias: mediasWithFullPath };
   } catch (error) {
     console.error("Erreur: ", error);
     return {
