@@ -16,7 +16,7 @@ export async function getMedias() {
     const baseUrl =
       window.location.hostname === "localhost"
         ? "../assets/media/"
-        : "https://fvnny-code.github.io/Front-End-Fisheye/assets/media/";
+        : "https://fvnny-code.github.io/Front-End-Fisheye/assets/Media/";
 
     // Récupérer les données des médias depuis le fichier JSON
     const fetchMedias = await fetch("data/photographers.json");
