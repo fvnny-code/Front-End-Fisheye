@@ -24,14 +24,14 @@ export async function getMedias() {
       throw new Error("Erreur récup data");
     }
     const dataMedias = await fetchMedias.json();
-    const medias = dataMedias.media;
+    const medias = dataMedias.Media;
 
     // Mettre à jour le chemin des médias pour qu'il soit dynamique
-    const mediasWithFullPath = medias.map((media) => {
+    const mediasWithFullPath = medias.map((Media) => {
       return {
-        ...media,
+        ...Media,
         // Ajout du chemin complet pour chaque média
-        src: `${baseUrl}${media.fileName}`,
+        src: `${baseUrl}${Media.fileName}`,
       };
     });
 
