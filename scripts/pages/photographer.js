@@ -1,3 +1,11 @@
+// Détection de l'environnement pour ajuster les chemins
+const isLocalEnv = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const basePath = isLocalEnv ? "." : "/projet-fisheye";
+
+// Mise à jour dynamique des chemins pour les importations
+const utilsPath = `${basePath}/scripts/utils`;
+const factoriesPath = `${basePath}/scripts/factories`;
+
 import { getPhotographers, getMedias } from "../utils/data.js";
 import { toggleFocusOnBackground } from "../utils/accessibility.js";
 import { photographerHeaderFactory } from "../factories/photographerHeaderFactory.js";

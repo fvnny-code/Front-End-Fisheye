@@ -1,3 +1,10 @@
+// Détection de l'environnement pour ajuster les chemins
+const isLocalEnv = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
+const basePath = isLocalEnv ? "." : "/projet-fisheye";
+
+// Mise à jour dynamique des chemins pour les importations
+const utilsPath = `${basePath}/scripts/utils`;
+
 import { formValidatorFactory } from "./formValidator.js"; // Mise à jour du chemin de l'import
 
 let openButton = null; // Variable pour stocker l'élément qui a ouvert la modale
