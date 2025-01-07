@@ -19,7 +19,7 @@ export async function getMedias() {
           : "https://fvnny-code.github.io/Front-End-Fisheye/assets/Media";
   
       // Récupérer les données des médias depuis le fichier JSON
-      const fetchMedias = await fetch("../data/photographers.json");
+      const fetchMedias = await fetch("data/photographers.json");
       if (!fetchMedias.ok) {
         throw new Error("Erreur récup data");
       }
